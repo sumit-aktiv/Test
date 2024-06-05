@@ -1,0 +1,46 @@
+<odoo>
+    <!--form view code -->
+    <record id="hospital_patient_form_view" model="ir.ui.view">
+        <field name="name">hospital.patient.form.view</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="resultshow"/>
+                            <field name="total_mark"/>
+                            <field name="obtain_mark"/>
+                            <field name="file_name" invisible="0"/>
+                            <field name="file" filename="file_name"/>
+                            <field name="active"/>
+                            <field name="partner_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+   </record>
+
+   <!--list(tree) view code-->
+   <record id="hospital_patient_view_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.view.tree</field>
+        <field name="model">hospital.patient</field> 
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+   </record>
+
+    <record id="hospital_management_action_subject" model="ir.actions.act_window">
+        <field name="name">Hospital</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">list,form</field>
+    </record>  
+
+    <menuitem id="main_menu_hospital" name="Hospital" sequence="1"/>
+    <menuitem id="hospital_patient_menu" name="Patient" action="hospital_management.hospital_management_action_subject" parent="main_menu_hospital" sequence="2"/>
+</odoo>
